@@ -4,8 +4,8 @@ demoscene
 
 ## License ##
 
-    <one line to give the program's name and a brief idea of what it does.>
-    Copyright (C) <year>  <name of author>
+    visual - demoscene
+    Copyright (C) 2014  V. S. Lutov
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
