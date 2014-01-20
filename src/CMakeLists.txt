@@ -1,11 +1,7 @@
 CMAKE_MINIMUM_REQUIRED (VERSION 2.8)
 PROJECT (visual)
 
-FILE (COPY ${CMAKE_CURRENT_SOURCE_DIR}/main.asm
-      DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-
-EXECUTE_PROCESS (COMMAND fasm ${CMAKE_CURRENT_BINARY_DIR}/main.asm
-                         ${CMAKE_CURRENT_BINARY_DIR}/visual)
-
-FILE (REMOVE ${CMAKE_CURRENT_BINARY_DIR}/main.asm)
+ADD_CUSTOM_TARGET (visual ALL
+                   fasm ${CMAKE_CURRENT_SOURCE_DIR}/main.asm
+                        ${CMAKE_CURRENT_BINARY_DIR}/visual)
 
