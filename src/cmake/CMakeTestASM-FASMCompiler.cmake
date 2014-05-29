@@ -14,12 +14,7 @@
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-LIST (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
-SET (CMAKE_ASM-FASM_LINK_FLAGS "-melf_i386")
-ENABLE_LANGUAGE (ASM-FASM)
-
-CMAKE_MINIMUM_REQUIRED (VERSION 2.8)
-PROJECT (visual)
-
-ADD_EXECUTABLE (visual main.asm)
+set(ASM_DIALECT "-FASM")
+include(CMakeTestASMCompiler)
+set(ASM_DIALECT)
 
