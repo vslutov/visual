@@ -14,21 +14,26 @@
 ;   You should have received a copy of the GNU General Public License
 ;   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-include 'int80h.asm'
 include 'strucs.asm'
 
-format ELF
+format ELF executable 3
 
-section '.text'
+segment executable
 
-  public _start
-  _start:
+entry start
+start:
 
-  int80h 4, 1, msg, msg.size
+  mov eax,4
+  mov ebx,1
+  mov ecx,msg
+  mov edx,msg.size
+  int 0x80
 
-  int80h 1, 0
+  mov eax,1
+  xor ebx,ebx
+  int 0x80
 
-section '.rodata'
+segment readable
 
   msg string 'Hello, World!',0xA
 
