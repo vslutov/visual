@@ -14,6 +14,9 @@
 ;   You should have received a copy of the GNU General Public License
 ;   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+include 'int80h.asm'
+include 'strucs.asm'
+
 format ELF
 
 section '.text'
@@ -21,18 +24,11 @@ section '.text'
   public _start
   _start:
 
-	mov	eax,4
-	mov	ebx,1
-	mov	ecx,msg
-	mov	edx,msg_size
-	int	0x80
+  int80h 4, 1, msg, msg.size
 
-	mov	eax,1
-	xor	ebx,ebx
-	int	0x80
+  int80h 1, 0
 
 section '.rodata'
 
-  msg db 'Hello world!',0xA
-  msg_size = $-msg
+  msg string 'Hello, World!',0xA
 
